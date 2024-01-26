@@ -21,15 +21,17 @@ body{
 .container{
     position: relative;
     width: 400px;
-    height: 555px;
+    height: 100px;
     
     background-color: rgb(255, 255, 255, .1 );
-    backdrop-filter: blur(20px);
+    backdrop-filter: blur(25px);
     border: 2px solid rgb(255, 255, 255, .2);;
     border-radius: 16px;
     padding: 16px;
 
     color: #fff;
+
+    transition: height .6s ease;
 
 }
 
@@ -102,8 +104,21 @@ body{
     text-align: center;
     margin: 40px 0;
 }
+
+.weather-box,
+.weather-info,
+.not_found{
+    visibility: hidden;
+}
+
+.weather-box.active,
+.weather-info.active,
+.not_found.active{
+    visibility: visible;
+}
+
 .weather-box img{
-    width: 60%;
+    width: 50%;
 }
 
 .weather-box .temperature{
@@ -153,7 +168,7 @@ body{
 
 .weather-info .wind{
     justify-content: flex-end;
-    padding-right: 20px;
+    /* padding-right: 20px; */
 }
 
 
@@ -172,4 +187,22 @@ body{
 
 .weather-info p{
     font-weight: 700;
+}
+
+.not_found{
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   text-align: center;
+   margin-top: 50px;
+}
+.not_found img{
+    width: 65%;
+
+}
+
+.not_found p{
+    font-size: 20px;
+    font-weight: 600;
 }
