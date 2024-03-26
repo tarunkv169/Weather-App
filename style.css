@@ -16,6 +16,7 @@ body{
     background-position: cover;
     background-size: cover;
     min-height: 100vh;
+    overflow: hidden;
 }
 
 .container{
@@ -108,6 +109,7 @@ body{
 .weather-box,
 .weather-info,
 .not_found{
+    overflow: hidden;
     visibility: hidden;
 }
 
@@ -116,6 +118,31 @@ body{
 .not_found.active{
     visibility: visible;
 }
+
+.weather-box .box,
+.not-found .box{
+  transform: translateY(-100%);
+}
+
+
+.weather-box.active .box,
+.not-found.active .box{
+    transform: translateY(0%);
+    transition: transform 1s ease;
+    transition-delay: .6s;
+}
+
+.weather-box .box .info-weather{
+    transform: translateY(-120%);
+}
+
+.container.active .weather-box .box .info-weather,
+.container.active .weather-info .humidity .info-humidity,
+.container.active .weather-info .wind .info-wind{
+    transform: translateY(0%);
+    transition: transform 1s ease;
+}
+
 
 .weather-box img{
     width: 50%;
@@ -158,6 +185,20 @@ body{
     display: flex;
     align-items: center;
     width: 50%;
+    transform: translateY(-100%);
+}
+
+.weather-info.active .humidity,
+.weather-info.active .wind{
+    transform: translateY(0%);
+    transition: transform 1s ease;
+    transition-delay: 1.2s;
+}
+
+.weather-info .humidity .info-humidity,
+.weather-info .wind .info-wind{
+   transform: translateY(-100%);
+   overflow: hidden;
 }
 
 .weather-info .humidity{
@@ -205,4 +246,44 @@ body{
 .not_found p{
     font-size: 20px;
     font-weight: 600;
+}
+
+.city-hide{
+    display: none;
+}
+
+#clone-info-weather,
+#clone-info-humidity,
+#clone-info-wind{
+    position: absolute;
+    transform: translateY(-100%);
+}
+
+#clone-info-weather .weather{
+    transform: translateY(150%);
+    transition: transform 1s ease, opacity 0s;
+    transition-delay: 0s, 2s;
+}
+
+.weather-box:not(.active) #clone-info-weather .weather{
+    opacity: 0;
+    transition-delay: 2s;
+}
+
+.active-clone#clone-info-weather .weather{
+    transform: translateY(0%);
+}
+
+#clone-info-humidity span,
+#clone-info-wind span{
+    transform: translateY(100%);
+    transition: transform 1s ease;
+    
+}
+
+.active-clone#clone-info-humidity span,
+.active-clone#clone-info-wind span{
+    transform: translateY(0%);
+    
+
 }
